@@ -22,5 +22,9 @@
   "heshan": {
     "salt": "fb411e41e2f76615c48e45bbc95cb629",
     "hash": "3537c3129a2c16fa44b3eb5e48306aa3d19bdb0198685b0d6e5a846f2fc48f72"
+  },
+  "thamindu": {
+    "salt": "2f127fb772678688c4fc889711e84ec2",
+    "hash": "af83fc7db08a0cca3ae8c3542c937fae1651d3561e9c9d7a0f946b5f57ec896b"
   }
 }
