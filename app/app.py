@@ -4,7 +4,12 @@ from pathlib import Path
 import pandas as pd
 import numpy as np
 import streamlit as st
-import joblib
+
+# Try importing joblib, fallback to sklearn.externals.joblib if needed
+try:
+    import joblib
+except ImportError:
+    from sklearn.externals import joblib
 
 # PDF generation imports
 from reportlab.lib.pagesizes import letter, A4
