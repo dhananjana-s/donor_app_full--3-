@@ -1,7 +1,8 @@
 {
-  "model": "LogReg",
-  "f1_macro": 0.5194620423064533,
-  "roc_auc": 0.5187131440141826,
-  "threshold": 0.5,
-  "timestamp": 1759696798
+  "model": "RandomForest",
+  "threshold": 0.375,
+  "accuracy_test": 0.5096807953950812,
+  "f1_macro_test": 0.3404512215380547,
+  "roc_auc_test": 0.4762730175287124,
+  "timestamp": 1759700053
 }

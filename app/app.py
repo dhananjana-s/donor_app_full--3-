@@ -277,15 +277,33 @@ if predict_button and st.session_state['logged_in']:
     # Map "Others" to "Unknown" for the model
     city_for_model = "Unknown" if city == "Others" else (city or None)
 
+    # Calculate engineered features that the model expects
+    months_val = months_since_first_donation if months_since_first_donation != "" else 1
+    donations_val = number_of_donation if number_of_donation != "" else 1
+    pints_val = pints_donated if pints_donated != "" else 1
+    
+    # Calculate the missing engineered features
+    donations_per_month = donations_val / max(months_val, 1)
+    account_age_months = months_val  # Same as months_since_first_donation
+    age_x_donations = months_val * donations_val
+    pints_per_donation = pints_val / max(donations_val, 1)
+
     X = pd.DataFrame([{
+        # Basic features
         "city": city_for_model,
         "blood_group": blood_group or None,
-        "months_since_first_donation": months_since_first_donation if months_since_first_donation != "" else None,
-        "number_of_donation": number_of_donation if number_of_donation != "" else None,
-        "pints_donated": pints_donated if pints_donated != "" else None,
+        "months_since_first_donation": months_val,
+        "number_of_donation": donations_val,
+        "pints_donated": pints_val,
         "created_at_year": created_at_year,
         "created_at_month": created_at_month,
-        "created_at_day": created_at_day
+        "created_at_day": created_at_day,
+        
+        # Engineered features that the model expects
+        "donations_per_month": donations_per_month,
+        "account_age_months": account_age_months,
+        "age_x_donations": age_x_donations,
+        "pints_per_donation": pints_per_donation
     }])
     
     try:
